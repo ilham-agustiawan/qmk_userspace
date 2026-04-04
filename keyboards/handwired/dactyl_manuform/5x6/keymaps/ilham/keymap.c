@@ -41,14 +41,14 @@ enum custom_keycodes {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_5x6(
-        KC_EQL,        KC_1, KC_2, KC_3, KC_4, KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-        KC_TAB,        KC_Q, KC_W, KC_E, KC_R, KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        MO(TERMINAL),  KC_A, KC_S, KC_D, KC_F, KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    QHOME_SCLN, KC_QUOT,
-        MO(NUMBER), QHOME_Z, QHOME_X, QHOME_C, QHOME_V, KC_B,                         KC_N, QHOME_M, QHOME_COMM, QHOME_DOT, HYPR_T(KC_SLSH), TG(NUMBER),
-            QK_REP, MO(FUNCTION),                                                                   KC_LBRC, KC_RBRC,
+        KC_EQL,        KC_1, KC_2, KC_3, KC_4, KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,      KC_0,            KC_MINS,
+        KC_TAB,        KC_Q, KC_W, KC_E, KC_R, KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,      KC_P,            KC_BSLS,
+        MO(TERMINAL),  KC_A, KC_S, KC_D, KC_F, KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,      QHOME_SCLN,      KC_QUOT,
+        OSM(MOD_LSFT), QHOME_Z, QHOME_X, QHOME_C, QHOME_V, KC_B,             KC_N, QHOME_M, QHOME_COMM, QHOME_DOT, HYPR_T(KC_SLSH), QK_REP,
+            MO(NUMBER), MO(FUNCTION),                                                                   KC_LBRC, KC_RBRC,
         MO(CURSOR), KC_BSPC,                                                                   KC_SPC, MO(SYMBOL),
-        XXX, KC_ESC,                                                                           KC_ENT, XXX,
-        XXX, XXX,                                                                              XXX, XXX
+        XXX, KC_ESC,                                                                             KC_ENT, QK_BOOT,
+        XXX, XXX,                                                                                XXX,  XXX
     ),
 
   [CURSOR] = LAYOUT_5x6(
@@ -56,23 +56,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   _______, C(KC_W), MY_COPY, MY_PASTE, TT(FUNCTION),                               BSPC_WORD,S(KC_TAB), KC_TAB, KC_DEL, _______, _______,
         CAPS_WORD, ALT_TAB,  G(KC_TILD), TG(NUMBER), LEADER_TMUX, C(KC_G),                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CAPS_WORD, _______,
         KC_CAPS,  OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_HYPR),        KC_HOME, KC_PGDN, KC_PGUP, KC_END,   _______, _______,
-                         _______, _______,                                                                     _______, _______,
-        _______,          _______,                                                                     _______, _______,
+                     _______, _______,                                                                     _______, _______,
+                _______,          _______,                                                                     _______, _______,
         _______,          TOG_MAC_LINUX,                                                               _______, _______,
-        _______,          QK_BOOT,                                                                     _______, _______
+        _______,          _______,                                                                     _______, _______
     ),
 
   /*
    * Symbol Layer
    *
    * ,-------------------------------------------.                             ,-------------------------------------------.
-   * |  =   |  +   |  *   |  /   |  \   |  |   |                               |      |      |      |      |      |      |
+   * |  `   |  +   |  *   |  =   |  \   |  ~   |                               |      |      |      |      |      |      |
    * |------+------+------+------+------+------|                               |------+------+------+------+------+------|
-   * |  %   |  !   |  @   |  {   |  }   |  ?   |                               | Bspc | PgDn | PgUp | Del  | Cmd  |      |
+   * |  &   |  !   |  @   |  {   |  }   |  ?   |                               | Bspc | S-Tab| Tab  | ATab | Cmd  |  |   |
    * |------+------+------+------+------+------|                               |------+------+------+------+------+------|
-   * |  -   |  &   |  $   |  (   |  )   |  `   |                               | Left | Down |  Up  |Right |  :   |      |
+   * |  #   |  ^   |  -   |  (   |  )   |  $   |                               | Left | Down |  Up  |Right |  :   |      |
    * |------+------+------+------+------+------|                               |------+------+------+------+------+------|
-   * |  _   |  #   |  ^   |  [   |  ]   |  ~   |                               | Esc  | RSft | RCtl | RAlt | RGui |      |
+   * |  '   |  "   |  _   |  [   |  ]   |  %   |                               |A+RSft| RSft | RCtl | RAlt | RGui |      |
    * `-------------+------+------.                               .------+------+------+-------------'
    *               |      |      |                               |      |      |
    *               `------+------+                               +------+------'
@@ -84,10 +84,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                      `------'                               `------'
    */
   [SYMBOL] = LAYOUT_5x6(
-        KC_EQL,  KC_PLUS, KC_ASTR, KC_PERC, KC_BSLS, KC_PIPE,                           _______, _______, _______, _______, _______, _______,
-        KC_PERC, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUES,                           KC_BSPC, S(KC_TAB), KC_TAB, ALT_TAB, CMD_PAL, _______,
-        KC_MINS, KC_AMPR, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                            KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_COLN, _______,
-        KC_UNDS, KC_HASH, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,                           RALT_RSFT, OSM(MOD_RSFT), KC_RCTL, KC_RALT, KC_RGUI, _______,
+        KC_GRV,  KC_PLUS, KC_ASTR, KC_EQL,  KC_BSLS, KC_TILD,                           _______, _______, _______, _______, _______, _______,
+        KC_AMPR, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUES,                           KC_BSPC, S(KC_TAB), KC_TAB, ALT_TAB, CMD_PAL, KC_PIPE,
+        KC_HASH, KC_CIRC, KC_MINS, KC_LPRN, KC_RPRN, KC_DLR,                            KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_COLN, _______,
+        KC_QUOT, KC_DQUO, KC_UNDS, KC_LBRC, KC_RBRC, KC_PERC,                           RALT_RSFT, OSM(MOD_RSFT), KC_RCTL, KC_RALT, KC_RGUI, _______,
              _______, _______,                                                                     _______, _______,
                 _______, _______,                                                                  _______, _______,
                 _______, _______,                                                                  _______, _______,
