@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,        KC_Q, KC_W, KC_E, KC_R, KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,      KC_P,            KC_BSLS,
         MO(TERMINAL),  KC_A, KC_S, KC_D, KC_F, KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,      QHOME_SCLN,      KC_QUOT,
         OSM(MOD_LSFT), QHOME_Z, QHOME_X, QHOME_C, QHOME_V, KC_B,             KC_N, QHOME_M, QHOME_COMM, QHOME_DOT, HYPR_T(KC_SLSH), QK_REP,
-            MO(NUMBER), MO(FUNCTION),                                                                   KC_LBRC, KC_RBRC,
+            MO(NUMBER), MO(FUNCTION),                                                                   KC_LBRC, LT(MOUSE, KC_RBRC),
         MO(CURSOR), KC_BSPC,                                                                   KC_SPC, MO(SYMBOL),
         XXX, KC_ESC,                                                                             KC_ENT, QK_BOOT,
         XXX, XXX,                                                                                XXX,  XXX
