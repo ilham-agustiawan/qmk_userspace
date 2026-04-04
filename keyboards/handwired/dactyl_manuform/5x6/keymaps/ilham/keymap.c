@@ -167,6 +167,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QHOME_X:
     case QHOME_Z:
+      return TAPPING_TERM + 15;
+
     case QHOME_SCLN:
     case QHOME_DOT:
     case QHOME_C:
@@ -174,7 +176,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
     case QHOME_M:
     case QHOME_V:
-      return TAPPING_TERM + 20;
+      return TAPPING_TERM - 5;
 
     default:
       return TAPPING_TERM;
